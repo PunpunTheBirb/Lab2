@@ -122,16 +122,17 @@ public class PathManagerEditor : Editor
 
             EditorGUI.BeginChangeCheck();
             Vector3 oldpos = p.GetPos();
-            Vector3 newpos = Handles.PositionHandle(oldpos, Quaternion.identity);
+            Vector3 newPos = Handles.PositionHandle(oldpos, Quaternion.identity);
 
-            float handleSize = HandleUtility.GetHandleSize(newpos);
+            float handleSize = HandleUtility.GetHandleSize(newPos);
 
-            Handles.SphereHandleCap(-1, newpos, Quaternion.identity, 0.25f, handleSize, EventType.Repaint);
+            Handles.SphereHandleCap(-1, newPos, Quaternion.identity, 0.25f * handleSize, EventType.Repaint);
             if (EditorGUI.EndChangeCheck())
             {
-                p.SetPos(newpos);
+                p.SetPos(newPos);
             }
             Handles.color = C;
+          
         }
         else
         {
