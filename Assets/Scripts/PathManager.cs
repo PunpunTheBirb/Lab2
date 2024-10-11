@@ -35,12 +35,6 @@ public class PathManager : MonoBehaviour
         return path[currentPointIndex];
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //giving error
-       // target = PathManager.GetNextTarget();
-    }
-
     public void Start()
     {
         prefabPoints = new List<GameObject>();
@@ -52,15 +46,15 @@ public class PathManager : MonoBehaviour
         }
     }
 
-    public void Update()
+    public void Update() 
     {
-        for (int i = 0; i < path.Count; i++)
+        for (int i = 0; i<path.Count; i++)
         {
             Waypoint p = path[i];
             GameObject g = prefabPoints[i];
             g.transform.position = p.pos;
-
         }
     }
+   
 }
 

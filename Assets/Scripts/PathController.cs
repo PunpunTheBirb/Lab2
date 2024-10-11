@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -29,6 +30,8 @@ public class PathController : MonoBehaviour
 
         isWalking = false;
         animator.SetBool("isWalking", isWalking);
+
+        
     }
 
     void rotateTowardsTarget()
@@ -55,6 +58,7 @@ public class PathController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.anyKeyDown)
         {
             isWalking = !isWalking;
@@ -65,5 +69,10 @@ public class PathController : MonoBehaviour
         rotateTowardsTarget();
         moveForward();
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        target = pathManager.GetNextTarget();
     }
 }
